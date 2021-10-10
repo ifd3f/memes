@@ -1,0 +1,37 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage[outline]{contour}
+
+\begin{document} 
+\begin{tikzpicture}
+\node[inner sep=0pt] (russell) at (0,0)
+{\includegraphics[width=10cm]{icarly.png}};
+
+\node at (1.7, 2.5) {
+	\color{white} 
+	CPLUG
+};
+
+\node at (-2, -1) {
+	\color{white} 
+	Random people
+};
+
+\node at (-0.5, -3) {
+	\color{white} 
+	\contour{black}{Free pizza}
+};
+
+\node[text width=3cm,align=center] at (-2, 3) {
+	\color{black} 
+	\textbf{I'd like to interject for a moment...}
+};
+
+\node at (-3, -4.5) {
+	\color{white} 
+	\tiny
+	this meme was made using \LaTeX
+};
+\end{tikzpicture}
+\end{document}
