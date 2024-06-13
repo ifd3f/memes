@@ -1,0 +1,123 @@
+\documentclass{minimal}
+\usepackage{tikz,ifthen}
+\begin{document}
+\def\elements{wallet1.png, pay1.png, wallet2.png, pay2.png, pay.png, pay-send.png, androidpay.png, wallet3.png, google-checkout.png}
+\def \n {9}
+\def \radius {5cm}
+\def \imgwidth {1.5cm}
+\def \noderadius {0.5cm}
+\begin{tikzpicture}
+\foreach \image [count=\i] in \elements {
+  \node[draw, circle,inner sep=0pt,minimum size=\noderadius] (n\i) at ({360/\n * (\i - 1)}:\radius) {
+    \includegraphics[width=\imgwidth]{\image}
+  };
+}
+\foreach \step in {1, ..., 8} {
+    \pgfmathtruncatemacro{\idxend}{\n-\step}
+    \foreach \i in {1, ..., \idxend} {
+        \pgfmathtruncatemacro{\j}{\i+\step}
+        \draw[-,line width=0.25cm] (n\i.center) -- (n\j.center);
+        \draw[-,line width=0.23cm,color=white] (n\i.center) -- node [sloped,midway,color=black] {is not} (n\j.center);
+    }
+}
+\foreach \image [count=\i] in \elements {
+  \node[draw, circle, fill=white, inner sep=0pt, minimum size=\noderadius] at ({360/\n * (\i - 1)}:\radius) {
+    \includegraphics[width=\imgwidth]{\image}
+  };
+}
+\end{tikzpicture}
+
+\begin{tikzpicture}[scale = 3]
+  \node[draw, circle,inner sep=0pt,minimum size=\noderadius] (checkout) at (1, 5) {
+    \includegraphics[width=\imgwidth]{google-checkout.png}
+  };
+  \node[draw, circle,inner sep=0pt,minimum size=\noderadius] (w1) at (2, 4) {
+    \includegraphics[width=\imgwidth]{wallet1.png}
+  };
+  \node[draw, circle,inner sep=0pt,minimum size=\noderadius] (w2) at (2, 3) {
+    \includegraphics[width=\imgwidth]{wallet2.png}
+  };
+  \node[draw, circle,inner sep=0pt,minimum size=\noderadius] (send) at (2, 2) {
+    \includegraphics[width=\imgwidth]{pay-send.png}
+  };
+  \node[draw, circle,inner sep=0pt,minimum size=\noderadius] (tez) at (3, 3) {
+    \includegraphics[width=\imgwidth]{tez.png}
+  };
+  \node[draw, circle,inner sep=0pt,minimum size=\noderadius] (pay2) at (3, 2) {
+    \includegraphics[width=\imgwidth]{pay2.png}
+  };
+  \node[draw, circle,inner sep=0pt,minimum size=\noderadius] (pay1) at (1, 2) {
+    \includegraphics[width=\imgwidth]{pay1.png}
+  };
+  \node[draw, circle,inner sep=0pt,minimum size=\noderadius] (apay) at (1, 3) {
+    \includegraphics[width=\imgwidth]{androidpay.png}
+  };
+  \node[draw, circle,inner sep=0pt,minimum size=\noderadius] (wallet3) at (1, 1) {
+    \includegraphics[width=\imgwidth]{wallet3.png}
+  };
+  \node[draw, circle,inner sep=0pt,minimum size=\noderadius] (pay) at (3, 1) {
+    \includegraphics[width=\imgwidth]{pay.png}
+  };
+    
+\draw[-,line width=0.25cm] 
+    (pay.center) -- (send.center);
+\draw[-,line width=0.23cm,color=white]
+    (pay.center) -- (send.center);
+    
+\draw[-,line width=0.25cm] 
+    (pay.center) -- (pay1.center);
+\draw[-,line width=0.23cm,color=white]
+    (pay.center) -- (pay1.center);
+
+\draw[-,line width=0.25cm] 
+    (w2.center) -- (wallet3.center);
+\draw[-,line width=0.23cm,color=white]
+    (w2.center) -- (wallet3.center);
+
+\draw[-,line width=0.25cm] 
+    (pay2.center) -- (wallet3.center);
+\draw[-,line width=0.23cm,color=white]
+    (pay2.center) -- (wallet3.center);
+
+\draw[-,line width=0.25cm] 
+    (w2.center) -- (send.center);
+\draw[-,line width=0.23cm,color=white]
+    (w2.center) -- (send.center);
+
+\draw[-,line width=0.25cm] 
+    (checkout.center) -- (w1.center) -- (w2.center) -- (apay.center) -- (pay1.center) -- (wallet3.center) -- (pay.center) -- (pay2.center) -- (tez.center);
+\draw[-,line width=0.23cm,color=white]
+    (checkout.center) -- (w1.center) -- (w2.center) -- (apay.center) -- (pay1.center) -- (wallet3.center) -- (pay.center) -- (pay2.center) -- (tez.center);
+
+  \node[draw, circle,inner sep=0pt,minimum size=\noderadius,fill=white] (checkout) at (1, 5) {
+    \includegraphics[width=\imgwidth]{google-checkout.png}
+  };
+  \node[draw, circle,inner sep=0pt,minimum size=\noderadius,fill=white]  (w1) at (2, 4) {
+    \includegraphics[width=\imgwidth]{wallet1.png}
+  };
+  \node[draw, circle,inner sep=0pt,minimum size=\noderadius,fill=white] (w2) at (2, 3) {
+    \includegraphics[width=\imgwidth]{wallet2.png}
+  };
+  \node[draw, circle,inner sep=0pt,minimum size=\noderadius,fill=white] (send) at (2, 2) {
+    \includegraphics[width=\imgwidth]{pay-send.png}
+  };
+  \node[draw, circle,inner sep=0pt,minimum size=\noderadius,fill=white] (tez) at (3, 3) {
+    \includegraphics[width=\imgwidth]{tez.png}
+  };
+ \node[draw, circle,inner sep=0pt,minimum size=\noderadius,fill=white] (pay2) at (3, 2) {
+    \includegraphics[width=\imgwidth]{pay2.png}
+  };
+  \node[draw, circle,inner sep=0pt,minimum size=\noderadius,fill=white]  (pay1) at (1, 2) {
+    \includegraphics[width=\imgwidth]{pay1.png}
+  };
+  \node[draw, circle,inner sep=0pt,minimum size=\noderadius,fill=white] (apay) at (1, 3) {
+    \includegraphics[width=\imgwidth]{androidpay.png}
+  };
+  \node[draw, circle,inner sep=0pt,minimum size=\noderadius,fill=white] (wallet3) at (1, 1) {
+    \includegraphics[width=\imgwidth]{wallet3.png}
+  };
+  \node[draw, circle,inner sep=0pt,minimum size=\noderadius,fill=white] (pay) at (3, 1) {
+    \includegraphics[width=\imgwidth]{pay.png}
+  };
+\end{tikzpicture}
+\end{document}
